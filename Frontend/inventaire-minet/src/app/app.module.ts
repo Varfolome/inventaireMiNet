@@ -8,6 +8,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ObjetsControlBarComponent } from './objets-control-bar/objets-control-bar.component';
 import { ObjectsShowSectionComponent } from './objects-show-section/objects-show-section.component';
 import { ObjectsAddSectionComponent } from './objects-add-section/objects-add-section.component';
+import { ConnectionFormComponent } from './connection-form/connection-form.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ObjectsAddSectionComponent } from './objects-add-section/objects-add-se
     FooterComponent,
     ObjetsControlBarComponent,
     ObjectsShowSectionComponent,
-    ObjectsAddSectionComponent
+    ObjectsAddSectionComponent,
+    ConnectionFormComponent
   ],
   imports: [
     BrowserModule,

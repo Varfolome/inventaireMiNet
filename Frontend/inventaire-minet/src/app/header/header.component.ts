@@ -1,3 +1,5 @@
+//static header-navigation component
+//simple html
 import { Component, OnInit } from '@angular/core';
 
 @Component({
