@@ -1,8 +1,7 @@
 import {InventoryParameter} from './InventoryParameter'
 
-export abstract class InventoryObject {
-  private name: string;
-  private paramNumber: number;
+export  class InventoryObject {
+  
   private Array<InventoryParameter>;
 
   public getName() : string {
