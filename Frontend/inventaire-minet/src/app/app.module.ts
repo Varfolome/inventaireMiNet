@@ -9,6 +9,7 @@ import { ObjetsControlBarComponent } from './objets-control-bar/objets-control-b
 import { ObjectsShowSectionComponent } from './objects-show-section/objects-show-section.component';
 import { ObjectsAddSectionComponent } from './objects-add-section/objects-add-section.component';
 import { ConnectionFormComponent } from './connection-form/connection-form.component';
+import { ObjectsPositionAddSectionComponent } from './objects-position-add-section/objects-position-add-section.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ConnectionFormComponent } from './connection-form/connection-form.compo
     ObjetsControlBarComponent,
     ObjectsShowSectionComponent,
     ObjectsAddSectionComponent,
-    ConnectionFormComponent
+    ConnectionFormComponent,
+    ObjectsPositionAddSectionComponent
   ],
   imports: [
     BrowserModule,

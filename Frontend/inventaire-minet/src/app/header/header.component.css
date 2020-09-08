@@ -1,12 +1,13 @@
 .header {
   width: 100%;
-  background-color: blue;
-  background-image: linear-gradient(
+  background-color: rgba(23,13,33,0.9);
+  /*background-image: linear-gradient(
     to right,
-    blue, #f06d05
-    );
+    white, gray
+    );*/
   display: flex;
   flex-direction: row;
+  box-sizing: border-box;
   border: 6px solid ;
   border-radius: 4px;
   box-shadow: 12px 12px 6px #888888;
@@ -14,7 +15,6 @@
 
 .header .navigation {
   width: 70%;
-  text-align: right;
   box-sizing: border-box;
   padding-left: 20px;
   padding-top: 10px;
@@ -24,16 +24,30 @@
   width: 30%;
   box-sizing: border-box;
   padding-top: 10px;
+  text-align: right;
 }
 
 .header .navigation .navigation-item {
   float: left;
   padding-left: 25px;
   font-family: Dot;
-  color: orange;
+  color: rgb(220,223,235);
+  cursor: pointer;
+}
+
+.header .navigation .navigation-item:hover {
+   color: white;
+   text-shadow: 2px 2px 1px gray;
 }
 
 ul {
   list-style-type: none;
   float: left;
+}
+
+.connection-icon {
+  width: 20px;
+  height: 30px;
+  padding-right: 10px;
+  cursor: pointer;
 }
