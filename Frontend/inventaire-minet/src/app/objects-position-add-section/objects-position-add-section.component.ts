@@ -12,4 +12,13 @@ export class ObjectsPositionAddSectionComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+
+    parameters = [];
+    addParameter(newParameter : string) : void {
+      if(newParameter) {
+        this.parameters.push(newParameter);
+      }
+    }
+
 }

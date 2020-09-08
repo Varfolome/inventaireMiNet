@@ -1,14 +1,23 @@
 <div class="object-position-add-section">
   <form class = "add-position-form">
     <label for="object-type">Entrer le type d'objet</label>
-    <input type = "text" name ="object-type" id = "object-type">
+    <input type = "text" name ="object-type" id = "object-type"><br>
 
-    <button type="button" id="button">+</button>
-    <button type="submit" name="button" id="button">Ajouter nouveau type d'objet</button>
+    <label for="new-parameter">Ajouter le paramètre</label>
+    <input type = "text" name="new-parameter" id="new-parameter"
+      #newParameter
+      (keyup.enter) = "addParameter(newParameter.value)"
+      (blur) = "addParameter(newParameter.value); newParameter.value='' ">
+
+    <button type="button" id="button" class="button-primary" (click) = "addParameter(newParameter.value)">+</button>
+
+    <button type="submit" name="button" id="button" class="button-primary">Ajouter nouveau type d'objet</button>
     </form>
     <div class ="add-params">
-         <form class="params">
-
-           </form>
+         <form class="params" id="params">
+           <ul>
+             <li *ngFor = "let parameter of parameters">{{parameter}}<input type="text"></li>
+           </ul>
+        </form>
       </div>
 </div>
