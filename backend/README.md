@@ -1,0 +1,2 @@
+# inventaireMiNet
+Inventaire MiNet
