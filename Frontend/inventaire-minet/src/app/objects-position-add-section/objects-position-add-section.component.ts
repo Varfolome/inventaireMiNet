@@ -21,4 +21,21 @@ export class ObjectsPositionAddSectionComponent implements OnInit {
       }
     }
 
+    searchForParameter(parameter : string) {
+      let n = this.parameters.length;
+      let i : number;
+      let index : number;
+      for (i = 0; i<n; i++){
+        if(this.parameters[i] === parameter) {
+          return i;
+        }
+      }
+    }
+
+    removeParameter(parameter : string) : void {
+      let parameterIndex  = this.searchForParameter(parameter);
+      this.parameters.splice(parameterIndex,1);
+      //alert(parameter);
+    }
+
 }

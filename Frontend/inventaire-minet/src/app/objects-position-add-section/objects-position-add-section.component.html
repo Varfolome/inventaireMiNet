@@ -16,7 +16,7 @@
     <div class ="add-params">
          <form class="params" id="params">
            <ul>
-             <li *ngFor = "let parameter of parameters">{{parameter}}<input type="text"></li>
+             <li *ngFor = "let parameter of parameters">{{parameter}}<input type="text"><button class = "button-primary" (click) = "removeParameter(parameter)">X</button></li>
            </ul>
         </form>
       </div>
