@@ -2,6 +2,7 @@
 Inventaire MiNET est une possible extension à adh6 dévelopée en Angular (Frontend) et en Flask (Backend)
 
 ## Mise en place du server
+Il sera plus simple de cloner le projet dans le dossier dans lequel vous voulez stocker voc serveur web. Dossier initial de nginx pour les pages web : ***/var/www/***
 ### 1. Installation de MySQL et de NGINX
 ``` sh
 $ apt install mysql-server
@@ -29,6 +30,14 @@ $ mysql> USE inventaireMiNET;
 $ mysql> CREATE TABLE IF NOT EXIST inventaire(id int NOT NULL AUTO_INCREMENT PRIMARY KEY, available boolean NOT NULL DEFAULT 1, comment VARCHAR(255));
 $ mysql> exit;
 ```
+
+## Démarrage du server
+Tous les fichier de configuration se trouvent dans le dossier *serveur* qui se trouve dans la racine.
+Les fichier de configuration serveurs/vhosts de NGINX se trouvent dans ***/etc/nginx/site-available/***
+
+#### Creation du service pour gérer le backend et la gestion du python côté serveur
+``` sh
+$ cd inventaireMiNET
 
 # Backend
 ``` python
