@@ -33,7 +33,7 @@ $ mysql> exit;
 
 ## Démarrage du server
 Tous les fichier de configuration se trouvent dans le dossier *serveur* qui se trouve dans la racine.
-Les fichier de configuration serveurs/vhosts de NGINX se trouvent dans ***/etc/nginx/site-available/***
+Les fichier de configuration serveurs/vhosts de NGINX se trouvent dans [***/etc/nginx/site-available/***](file:///etc/nginx/site-available/)
 
 #### Creation du service pour gérer le backend et la gestion du python côté serveur
 ``` sh
