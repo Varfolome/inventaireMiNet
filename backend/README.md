@@ -21,7 +21,6 @@ $ mysql> GRANT ALL ON inventaireMiNET.* TO 'MiNET'@'localhost';
 $ mysql> FLUSH PRIVILEGES;
 $ mysql> exit;
 ```
-<br />
 ## Initialization de la Base de données
 ``` sh
 $ mysql -u root -p
