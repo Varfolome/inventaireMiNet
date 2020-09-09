@@ -21,13 +21,20 @@ $ mysql> GRANT ALL ON inventaireMiNET.* TO 'MiNET'@'localhost';
 $ mysql> FLUSH PRIVILEGES;
 $ mysql> exit;
 ```
-## Initialization de la Base de données
+
+## Initialization de la Base de données (peut-être plus de param)
 ``` sh
 $ mysql -u root -p
 $ mysql> USE inventaireMiNET;
-$ mysql> CREATE TABLE IF NOT EXIST inventaire(
-$      > id int NOT NULL AUTO_INCREMENT PRIMARY KEY, 
-$      > available boolean NOT NULL DEFAULT 1,
-$      > comment VARCHAR(255));
+$ mysql> CREATE TABLE IF NOT EXIST inventaire(id int NOT NULL AUTO_INCREMENT PRIMARY KEY, available boolean NOT NULL DEFAULT 1, comment VARCHAR(255));
 $ mysql> exit;
 ```
+
+# Backend
+``` python
+from flask import Flask, jsonify, request
+import pymysql
+from flask_cors import CORS
+```
+
+La fonction ***add_table*** permet selon si on choisit *obj* ou *table* d'ajouter un objet ou un nouveau type d'objet (ex: switch, clavier, ...)
