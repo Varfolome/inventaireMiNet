@@ -9,9 +9,16 @@ $ apt install mysql-server
 $ apt install nginx
 ```
 
-2. Création de l'utilisateur MiNET
-
-Connection à MySQL
+### 2. Connection à MySQL
 ``` sh
 $ mysql -u root -p
+```
+
+### 3. Création de l'utilisateur et de la base de donnée
+``` sh
+mysql> CREATE DATABASE inventaireMiNET;
+mysql> CREATE USER 'MiNET'@'localhost' IDENTIFY BY 'password';
+mysql> GRANT ALL ON inventaireMiNET.* TO 'MiNET'@'localhost';
+mysql> FLUSH PRIVILEGES;
+mysql> exit;
 ```
