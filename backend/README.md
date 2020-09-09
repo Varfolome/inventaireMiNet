@@ -25,6 +25,9 @@ $ mysql> exit;
 ``` sh
 $ mysql -u root -p
 $ mysql> USE inventaireMiNET;
-$ mysql> CREATE TABLE IF NOT EXIST inventaire(id int NOT NULL AUTO_INCREMENT PRIMARY KEY, available boolean NOT NULL DEFAULT 1, comment VARCHAR(255));
+$ mysql> CREATE TABLE IF NOT EXIST inventaire(
+$      > id int NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+$      > available boolean NOT NULL DEFAULT 1,
+$      > comment VARCHAR(255));
 $ mysql> exit;
 ```
