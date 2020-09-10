@@ -1,17 +1,15 @@
 <div class="object-position-add-section">
   <form class = "add-position-form">
     <label for="object-type">Entrer le type d'objet</label>
-    <input type = "text" name ="object-type" id = "object-type"><br>
+    <input type = "text" name ="object-type" id = "object-type" #objectType>
+    <button type="button" class="button-primary" id="button" (click) = "TryToEdit(objectType.value)">Editer</button><br>
 
     <label for="new-parameter">Ajouter le paramètre</label>
-    <input type = "text" name="new-parameter" id="new-parameter"
-      #newParameter
-      (keyup.enter) = "addParameter(newParameter.value)"
-      (blur) = "addParameter(newParameter.value); newParameter.value='' ">
+    <input type = "text" name="new-parameter" id="new-parameter" #newParameter>
 
     <button type="button" id="button" class="button-primary" (click) = "addParameter(newParameter.value)">+</button>
 
-    <button type="submit" name="button" id="button" class="button-primary">Ajouter nouveau type d'objet</button>
+    <button  type ="button" name="button" id="button" class="button-primary">Ajouter nouveau type d'objet</button>
     </form>
     <div class ="add-params">
          <form class="params" id="params">
