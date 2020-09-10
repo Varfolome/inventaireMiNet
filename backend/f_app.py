@@ -2,6 +2,8 @@ from flask import Flask, jsonify, request
 import pymysql
 from flask_cors import CORS
 
+global host, user, password, db
+
 app = Flask(__name__)
 CORS(app)
 
@@ -51,15 +53,17 @@ def add_table(test: str):
 
                 sql_create_table += str(params_obj[n - 1]) + "` varchar(255) NOT NULL)"
 
-                #Ajout de la Foreign Key
-                #Lien entre la TABLE inventaire et celle crée
-                sql_foreignKey = "ALTER TABLE " + name_table + " ADD CONSTRAINT `id_" + name_table + "` FOREIGN KEY (`id`) REFERENCES `inventaire` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT"
+                """
+                Ajout de la Foreign Key
+                Lien entre la TABLE inventaire et celle crée
+                """
+
+                sql_foreign_key = "ALTER TABLE " + name_table + " ADD CONSTRAINT `id_" + name_table + "` FOREIGN KEY (`id`) REFERENCES `inventaire` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT"
 
                 cur.execute(sql_create_table)
-                cur.execute(sql_foreignKey)
+                cur.execute(sql_foreign_key)
 
-
-                return sql_create_table
+                return "success"
 
         except pymysql.Error as e:
             return str(e)
