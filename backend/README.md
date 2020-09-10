@@ -35,7 +35,7 @@ $ mysql> exit;
 ## Démarrage du server
 Tous les fichier de configuration se trouvent dans le dossier *serveur* qui se trouve dans la racine.
 Les fichier de configuration serveurs/vhosts de NGINX se trouvent dans ***/etc/nginx/site-available/***
-Copie du fichier de configuration du serveur 
+Copie du fichier de configuration du serveur : la partie backend tourne sur le port 8080 et la frontend sur le 8081
 #### Creation du service pour gérer le backend et la gestion du python côté serveur
 ``` sh
 $ cp inventaireMiNET/serveur/inventaireMiNET /etc/nginx/site-available/inventaireMiNET
@@ -54,4 +54,4 @@ import pymysql
 from flask_cors import CORS
 ```
 
-La fonction ***add_table*** permet selon si on choisit *obj* ou *table* d'ajouter un objet ou un nouveau type d'objet (ex: switch, clavier, ...)
+La fonction ***add_table*** permet selon si on choisit *obj* ou *table* d'ajouter un objet ou un nouveau type d'objet (ex: switch, clavier, ...). Lors de l'appel de Flask il suffit d'appeler le serveur avec *127.0.0.1:8080/add/**obj ou table***
