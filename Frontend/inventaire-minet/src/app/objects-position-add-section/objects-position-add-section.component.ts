@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HeapNode } from '../abstraction/HeapNode';
 
 @Component({
   selector: 'app-objects-position-add-section',
@@ -17,18 +18,33 @@ export class ObjectsPositionAddSectionComponent implements OnInit {
     parameters = [];
     addParameter(newParameter : string) : void {
       if(newParameter) {
-        this.parameters.push(newParameter.toUpperCase());
+        if(this.notExistingParameter(newParameter.toUpperCase()) === 1) {
+          console.log(this.searchForParameter(newParameter));
+          this.parameters.push(newParameter.toUpperCase());
+        }
+        else {
+            alert("Ce paramètre existe déjà");
+        }
       }
     }
 
     searchForParameter(parameter : string) {
       let n = this.parameters.length;
       let i : number;
-      let index : number;
       for (i = 0; i<n; i++){
         if(this.parameters[i] === parameter) {
           return i;
         }
+      }
+      return -1;
+    }
+
+    notExistingParameter(parameter : string) {
+      if(this.searchForParameter(parameter) === -1){
+        return 1;
+      }
+      else {
+        return 0;
       }
     }
 
