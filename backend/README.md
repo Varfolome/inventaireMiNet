@@ -5,17 +5,18 @@ Inventaire MiNET est une possible extension à adh6 dévelopée en Angular (Fron
 Il sera plus simple de cloner le projet dans le dossier dans lequel vous voulez stocker voc serveur web. Dossier initial de nginx pour les pages web : ***/var/www/***
 ### 1. Installation de MySQL et de NGINX
 ``` sh
-$ apt install python3-pip python3-dev build-essential libssl-dev libffi-dev python3-setuptools
 $ apt install mysql-server
 $ apt install nginx
 ```
 
-### 2. Connection à MySQL
+### 2. Installation 
+
+### 3. Connection à MySQL
 ``` sh
 $ mysql -u root -p
 ```
 
-### 3. Création de l'utilisateur et de la base de donnée
+### 4. Création de l'utilisateur et de la base de donnée
 ``` sh
 $ mysql> CREATE DATABASE inventaireMiNET;
 $ mysql> CREATE USER 'MiNET'@'localhost' IDENTIFY BY 'password';
