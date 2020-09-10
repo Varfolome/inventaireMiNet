@@ -1,0 +1,13 @@
+[Unit]
+Description=uWSGI instance to serve myproject
+After=network.target
+
+[Service]
+User=root
+Group=www-data
+WorkingDirectory=/var/www/inventaireMiNet/backend
+Environment="PATH=/var/www/inventaireMiNet/backend/backendenv/bin"
+ExecStart=/var/www/inventaireMiNet/backend/backendenv/bin/uwsgi --ini backend.ini
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,15 @@
+server {
+        listen 8080;
+        server_name inventaireMiNET www.inventaire;
+
+        location / {
+                include uwsgi_params;
+                uwsgi_pass unix:/var/www/inventaireMiNet/backend/backend.sock;
+        }
+}
+
+server {
+        listen 8081;
+        server_name test www.test;
+        root /var/www/inventaireMiNet;
+}
