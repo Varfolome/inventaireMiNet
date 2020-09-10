@@ -9,7 +9,17 @@ $ apt install mysql-server
 $ apt install nginx
 ```
 
-### 2. Installation 
+### 2. Installation Environnement Python
+Dans le dossier ***inventaireMiNET/backend/*** effectuer les commandes suivantes
+``` sh
+$ apt install python3-pip python3-dev build-essential libssl-dev libffi-dev python3-setuptools
+$ apt install python3-venv
+$ python3.7 -m venv backendenv
+$ source backendenv/bin/activate
+$ pip install wheel
+$ pip install uwsgi flask flask-cors
+$ pip install pymysql
+```
 
 ### 3. Connection à MySQL
 ``` sh
