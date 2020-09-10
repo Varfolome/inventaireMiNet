@@ -27,43 +27,40 @@ def add():
     return redirection()
 
 
-@app.route("/add/<string:test>", methods=['GET', 'POST'])
-def add_table(test: str):
+@app.route("/add_table", methods=['GET', 'POST'])
+def add_table():
     if request.method == 'POST':
         try:
             connection = pymysql.connect(host=host, user=user, password=password, db=db, charset='utf8')
             cur = connection.cursor(pymysql.cursors.DictCursor)
 
-            if test == "obj":
-                return 'obj'
-            elif test == "table":
-                name_table = request.form.get('name_table')
-                params_obj = request.form.getlist('params[]')
+            name_table = request.form.get('name_table')
+            params_obj = request.form.getlist('params[]')
 
-                n = len(params_obj)
-                if n == 0:
-                    return 'aucun paramètre'
+            n = len(params_obj)
+            if n == 0:
+                return 'aucun paramètre'
 
-                # Creation de la Table
-                sql_create_table = "CREATE TABLE IF NOT EXISTS " + name_table + " (`id` int PRIMARY KEY NOT NULL AUTO_INCREMENT, `"
+            # Creation de la Table
+            sql_create_table = "CREATE TABLE IF NOT EXISTS " + name_table + " (`id` int PRIMARY KEY NOT NULL AUTO_INCREMENT, `"
 
-                if n > 1:
-                    for i in range(n - 1):
-                        sql_create_table += str(params_obj[i]) + "` varchar(255) NOT NULL, `"
+            if n > 1:
+                for i in range(n - 1):
+                    sql_create_table += str(params_obj[i]) + "` varchar(255) NOT NULL, `"
 
-                sql_create_table += str(params_obj[n - 1]) + "` varchar(255) NOT NULL)"
+            sql_create_table += str(params_obj[n - 1]) + "` varchar(255) NOT NULL)"
 
-                """
-                Ajout de la Foreign Key
-                Lien entre la TABLE inventaire et celle crée
-                """
+            """
+            Ajout de la Foreign Key
+            Lien entre la TABLE inventaire et celle crée
+            """
 
-                sql_foreign_key = "ALTER TABLE " + name_table + " ADD CONSTRAINT `id_" + name_table + "` FOREIGN KEY (`id`) REFERENCES `inventaire` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT"
+            sql_foreign_key = "ALTER TABLE " + name_table + " ADD CONSTRAINT `id_" + name_table + "` FOREIGN KEY (`id`) REFERENCES `inventaire` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT"
 
-                cur.execute(sql_create_table)
-                cur.execute(sql_foreign_key)
+            cur.execute(sql_create_table)
+            cur.execute(sql_foreign_key)
 
-                return "success"
+            return "success"
 
         except pymysql.Error as e:
             return str(e)
