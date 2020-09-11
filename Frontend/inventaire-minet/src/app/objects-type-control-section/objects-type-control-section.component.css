@@ -1,0 +1,17 @@
+.object-type-control-panel {
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 20px;
+  padding-top: 15px;
+  background-image: linear-gradient(
+    to right,rgba(228,230,243,0.8), rgba(78,123,237,0.8)
+    );
+}
+
+.object-type-control-list {
+  list-style-type: none;
+}
+
+#Edit, #Delete, #Access  {
+  margin-left: 15px;
+}

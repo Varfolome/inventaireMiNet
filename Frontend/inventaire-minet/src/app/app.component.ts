@@ -7,7 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'inventaire-minet';
+
+  showObjectPositionAddSection = false;
+
+  GetChildData(data) {
+    this.showObjectPositionAddSection = data;
+  }
 }
+
 
 /*const API_URL = "";
 const form = document.getElementById('test-form');

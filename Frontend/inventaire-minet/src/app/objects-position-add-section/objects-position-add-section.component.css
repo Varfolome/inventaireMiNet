@@ -12,3 +12,9 @@
 #button {
   margin-left: 20px;
 }
+
+span {
+  margin-left : 15px;
+  color : red;
+  font-size: 20px;
+}

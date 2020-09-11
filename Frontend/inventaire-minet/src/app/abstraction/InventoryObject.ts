@@ -1,8 +1,10 @@
-import {InventoryParameter} from './InventoryParameter'
+import {InventoryParameter} from './InventoryParameter';
 
 export  class InventoryObject {
-  
-  private Array<InventoryParameter>;
+
+  public name;
+  public paramNumber;
+  public InventoryParameters : any;
 
   public getName() : string {
     return this.name;
@@ -11,5 +13,6 @@ export  class InventoryObject {
   public constructor(name : string, paramNumber : number) {
     this.name = name;
     this.paramNumber = paramNumber;
+    this.InventoryParameters = [];
   }
 }

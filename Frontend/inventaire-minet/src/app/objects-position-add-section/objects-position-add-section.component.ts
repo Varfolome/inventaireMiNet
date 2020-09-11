@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { HeapNode } from '../abstraction/HeapNode';
 
 @Component({
@@ -14,7 +14,7 @@ export class ObjectsPositionAddSectionComponent implements OnInit {
   }
 
     //const API_URL_EDIT_DEMAND = "http://localhost:8080/editDemand";
-
+    @Input() show;
     parameters = [];
     addParameter(newParameter : string) : void {
       if(newParameter) {

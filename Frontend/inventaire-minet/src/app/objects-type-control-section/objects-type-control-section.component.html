@@ -1,0 +1,13 @@
+<div class = "object-type-control-panel" *ngIf="show">
+  <ul class="object-type-control-list">
+    <li *ngFor="let objectType of objectTypeList">
+      <span>{{objectType.type}}</span>
+      <span>{{objectType.paramNumber}}</span>
+      <button class="button-primary" type="button" name="buttonEdit" id="Edit">Editer</button>
+      <button class="button-primary" type="button" name="buttonDelete" id="Delete">Supprimer</button>
+      <button class="button-primary" type="button" name="buttonAccess" id="Access">Accéder</button>
+    </li>
+    </ul>
+    <br>
+    <button class="button-primary" type="button" name="buttonAdd" id="Add" (click)="AddTypeObject()">+</button>
+  </div>

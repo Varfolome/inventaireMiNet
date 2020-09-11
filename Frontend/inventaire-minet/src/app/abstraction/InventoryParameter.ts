@@ -7,10 +7,10 @@ export class InventoryParameter {
     this.paramValue = value;
   }
 
-  public getParamName() : void {
+  public getParamName()  {
     return this.paramName;
   }
-  public getParamValue() : void {
+  public getParamValue()  {
     return this.paramValue;
   }
 }

@@ -10,6 +10,7 @@ import { ObjectsShowSectionComponent } from './objects-show-section/objects-show
 import { ObjectsAddSectionComponent } from './objects-add-section/objects-add-section.component';
 import { ConnectionFormComponent } from './connection-form/connection-form.component';
 import { ObjectsPositionAddSectionComponent } from './objects-position-add-section/objects-position-add-section.component';
+import { ObjectsTypeControlSectionComponent } from './objects-type-control-section/objects-type-control-section.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ObjectsPositionAddSectionComponent } from './objects-position-add-secti
     ObjectsShowSectionComponent,
     ObjectsAddSectionComponent,
     ConnectionFormComponent,
-    ObjectsPositionAddSectionComponent
+    ObjectsPositionAddSectionComponent,
+    ObjectsTypeControlSectionComponent
   ],
   imports: [
     BrowserModule,
