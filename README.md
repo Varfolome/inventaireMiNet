@@ -27,20 +27,20 @@ $ mysql -u root -p
 ```
 
 ### 4. Création de l'utilisateur et de la base de donnée
-``` sh
-$ mysql> CREATE DATABASE inventaireMiNET;
-$ mysql> CREATE USER 'MiNET'@'localhost' IDENTIFY BY 'password';
-$ mysql> GRANT ALL ON inventaireMiNET.* TO 'MiNET'@'localhost';
-$ mysql> FLUSH PRIVILEGES;
-$ mysql> exit;
+``` sql
+ CREATE DATABASE inventaireMiNET;
+ CREATE USER 'MiNET'@'localhost' IDENTIFY BY 'password';
+ GRANT ALL ON inventaireMiNET.* TO 'MiNET'@'localhost';
+ FLUSH PRIVILEGES;
+ exit;
 ```
 
 ## Initialization de la Base de données (peut-être plus de param)
-``` sh
+``` sql
 $ mysql -u root -p
-$ mysql> USE inventaireMiNET;
-$ mysql> CREATE TABLE IF NOT EXIST inventaire(id int NOT NULL AUTO_INCREMENT PRIMARY KEY, available boolean NOT NULL DEFAULT 1, comment VARCHAR(255));
-$ mysql> exit;
+ USE inventaireMiNET;
+ CREATE TABLE inventaire(id int NOT NULL AUTO_INCREMENT PRIMARY KEY, available bool NOT NULL DEFAULT 1, comment VARCHAR(255));
+ exit;
 ```
 
 ## Démarrage du server
