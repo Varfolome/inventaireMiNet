@@ -60,8 +60,7 @@ $ systemctl enable inventaireMiNET_backend
 
 # Backend
 ## Ajout d'un nouveau type d'objet
-Il suffit d'utiliser une equête en POST affin de rajouter une nouvelle table dans la base de données.  
-Lien pour effectuer la requête : ***/add_table***
+Lien pour effectuer la requête : **server_ip*/add_table***
 
 ### Arguments pour le POST
 **name_table** : chaine de charactere correspondant au nom de la nouvelle table.  
@@ -76,3 +75,6 @@ data: {
   params: ["test1", "test2"]
 }
 ```
+  
+## Ajout d'un nouvel objet
+Lien pour effectuer la requête : **server_ip*/add_obj/*** **nom de la table**
