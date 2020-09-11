@@ -60,7 +60,7 @@ $ systemctl enable inventaireMiNET_backend
 
 # Backend
 ## Ajout d'un nouveau type d'objet
-Lien pour effectuer la requête : **server_ip*/add_table***
+Lien pour effectuer la requête : **server_ip** ***/add_table***
 
 ### Arguments pour le POST
 **name_table** : chaine de charactere correspondant au nom de la nouvelle table.  
@@ -70,7 +70,7 @@ Lien pour effectuer la requête : **server_ip*/add_table***
 Lien pour effectuer la requête : **server_ip** ***/add_obj/nom de la table***
 
 ## Récupération des données pour l'affichage des objets d'un même type
-Lien pour effectuer la requête : **server_ip*/access***
+Lien pour effectuer la requête : **server_ip** ***/access***
 
 ### Arguments pour le POST
 **name_table** : chaine de charactère correspondant à la table à afficher
