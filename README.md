@@ -77,4 +77,4 @@ data: {
 ```
   
 ## Ajout d'un nouvel objet
-Lien pour effectuer la requête : **server_ip*/add_obj/nom de la table**
+Lien pour effectuer la requête : **server_ip** ***/add_obj/nom de la table***
