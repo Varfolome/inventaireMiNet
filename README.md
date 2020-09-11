@@ -72,7 +72,7 @@ Exemple [jQuery](https://jquery.com/) (en utilisant *$.ajax*):
 type: "POST",
 url: "http://127.0.0.1:5000/access",
 data: {
-  objectType: "test",
+  name_table: "test",
   params: ["test1", "test2"]
 }
 ```
