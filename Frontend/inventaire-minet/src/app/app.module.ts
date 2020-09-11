@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { ObjetsControlBarComponent } from './objets-control-bar/objets-control-bar.component';
 import { ObjectsShowSectionComponent } from './objects-show-section/objects-show-section.component';
 import { ObjectsAddSectionComponent } from './objects-add-section/objects-add-section.component';
 import { ConnectionFormComponent } from './connection-form/connection-form.component';
@@ -17,7 +16,6 @@ import { ObjectsTypeControlSectionComponent } from './objects-type-control-secti
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    ObjetsControlBarComponent,
     ObjectsShowSectionComponent,
     ObjectsAddSectionComponent,
     ConnectionFormComponent,

@@ -24,3 +24,15 @@ npm install -g @angular/cli
 Vous povez toujours lire des tutoriels [là](https://angular.io/tutorial/toh-pt1).
 
 ## Intro rapide dans Angular
+
+### Explication
+
+Cette explication est basée sur mon propre éxperience et peut être imprecis. Angular utilise Typescript au lieu de JavaScript. Chaque fois que vous écrivez un programme, il est compilé ou, plutôt, transpilé en JS. A la fin vous aurez la structure standarte de page web (un html, un css et les scripts), c'est pour ça que le code final de projet est illisible. On verra comment créer un projet Angular et rajouter des modules, ainsi que l'architecture de projet inventaireMiNet et le code de ce projet.
+
+### Créer le projet
+
+Choisissez votre fichier avec le projet et executer la commande suivante
+
+```bash
+ng new nom_de_projet
+```

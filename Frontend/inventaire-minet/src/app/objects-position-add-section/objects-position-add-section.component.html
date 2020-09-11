@@ -1,5 +1,6 @@
 <div class="object-position-add-section" *ngIf = "show">
   <form class = "add-position-form">
+    <button class ="button-primary" type="button" name="buttonBack" (click) = "BackToControlSection()">Rentrer</button><br>
     <label for="object-type">Entrer le type d'objet</label>
     <input type = "text" name ="object-type" id = "object-type" #objectType>
     <button type="button" class="button-primary" id="button" (click) = "TryToEdit(objectType.value)">Editer</button><br>

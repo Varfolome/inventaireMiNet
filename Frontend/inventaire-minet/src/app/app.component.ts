@@ -8,10 +8,14 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'inventaire-minet';
 
+  showObjectTypeControlSection = true;
   showObjectPositionAddSection = false;
+  showObjectAddSection = false;
+
 
   GetChildData(data) {
-    this.showObjectPositionAddSection = data;
+    this.showObjectPositionAddSection = data[0];
+    this.showObjectTypeControlSection = data[1];
   }
 }
 
