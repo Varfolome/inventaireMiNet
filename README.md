@@ -6,13 +6,13 @@ C'est le frontend de l'inventaire Minet fait avec Angular. Vous trouverez si-des
 
 ## Menu
 
-*[Les téchnologies utilisés](#téchnologies)
-*[Intro rapide dans Angular](#intro rapide)
-*[Architecture](#architecture)
+* [Les téchnologies utilisés](#téchnologies)
+* [Intro rapide dans Angular](#introrapide)
+* [Architecture](#architecture)
 
 ## Les téchnologies utilisés
 ### Angular
-Vous devez installer le [NodeJS](https://nodejs.org/en/) d'abord. Après vérifiez si Node est bien installé et installer Angular en utilisant respectivement les 2 commandes suivantes
+Vous devez installer le [NodeJS](https://nodejs.org/en/) d'abord. Après vérifiez si Node est bien installé et installer Angular en utilisant respectivement les 3 commandes suivantes
 
 ```bash
 node -v
