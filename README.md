@@ -59,10 +59,10 @@ $ systemctl enable inventaireMiNET_backend
 ```
 
 # Backend
-``` python
-from flask import Flask, jsonify, request
-import pymysql
-from flask_cors import CORS
-```
+## Ajout d'un nouveau type d'objet
+Il suffit d'utiliser une equête en POST affin de rajouter une nouvelle table dans la base de données.
+Lien pour effectuer la requête : ***/add_table***
 
-La fonction ***add_table*** permet selon si on choisit *obj* ou *table* d'ajouter un objet ou un nouveau type d'objet (ex: switch, clavier, ...). Lors de l'appel de Flask il suffit d'appeler le serveur avec *127.0.0.1:8080/add/**obj ou table***
+### Arguments pour le POST
+**name_table** : chaine de charactere correspondant au nom de la nouvelle table
+**params** : liste de l'ensemble des paramètres hors ceux commun à tous les objects
