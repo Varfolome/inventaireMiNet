@@ -66,15 +66,32 @@ Lien pour effectuer la requête : **server_ip*/add_table***
 **name_table** : chaine de charactere correspondant au nom de la nouvelle table.  
 **params** : liste de l'ensemble des paramètres hors ceux commun à tous les objects.  
   
-Exemple [jQuery](https://jquery.com/) (en utilisant *$.ajax*):
-``` js
-type: "POST",
-url: "http://127.0.0.1:5000/access",
-data: {
-  name_table: "test",
-  params: ["test1", "test2"]
-}
-```
-  
 ## Ajout d'un nouvel objet
 Lien pour effectuer la requête : **server_ip** ***/add_obj/nom de la table***
+
+## Récupération des données pour l'affichage des objets d'un même type
+Lien pour effectuer la requête : **server_ip*/access***
+
+### Arguments pour le POST
+**name_table** : chaine de charactère correspondant à la table à afficher
+
+### Format de la réponse
+``` json
+{
+  "name_table":"test",
+  "names":[
+    "id",
+    "test1",
+    "test2"
+  ],
+  "result":[
+    {"id":1,"test1":"val11","test2":"val12"},
+    {"id":2,"test1":"val21","test2":"val22"}
+  ],
+  "types":[
+    "int",
+    "varchar(255)",
+    "varchar(255)"
+  ]
+}
+```
