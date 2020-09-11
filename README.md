@@ -64,5 +64,5 @@ Il suffit d'utiliser une equête en POST affin de rajouter une nouvelle table da
 Lien pour effectuer la requête : ***/add_table***
 
 ### Arguments pour le POST
-**name_table** : chaine de charactere correspondant au nom de la nouvelle table
-**params** : liste de l'ensemble des paramètres hors ceux commun à tous les objects
+**name_table** : chaine de charactere correspondant au nom de la nouvelle table.
+**params** : liste de l'ensemble des paramètres hors ceux commun à tous les objects.
