@@ -65,4 +65,14 @@ Lien pour effectuer la requête : ***/add_table***
 
 ### Arguments pour le POST
 **name_table** : chaine de charactere correspondant au nom de la nouvelle table.  
-**params** : liste de l'ensemble des paramètres hors ceux commun à tous les objects.
+**params** : liste de l'ensemble des paramètres hors ceux commun à tous les objects.  
+  
+Exemple jQuery :
+``` js
+type: "POST",
+url: "http://127.0.0.1:5000/access",
+data: {
+  objectType: "test",
+  params: ["test1", "test2"]
+}
+```
