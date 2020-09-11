@@ -79,7 +79,7 @@ Lien pour effectuer la requête : **server_ip*/access***
 ``` json
 {
   "name_table":"test",
-  "names":[
+  "name_params":[
     "id",
     "test1",
     "test2"
