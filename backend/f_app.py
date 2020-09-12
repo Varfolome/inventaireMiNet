@@ -36,7 +36,7 @@ def add_table():
             connection = pymysql.connect(host=host, user=user, password=password, db=db, charset='utf8')
             cur = connection.cursor(pymysql.cursors.DictCursor)
 
-            name_table = request.form.get('name_table')
+            name_table = str(request.form.get('name_table')).lower()
             params_obj = request.form.getlist('params[]')
 
             n = len(params_obj)
@@ -57,7 +57,6 @@ def add_table():
             Ajout de la Foreign Key
             Lien entre la TABLE inventaire et celle crée
             """
-
             sql_foreign_key = "ALTER TABLE " + name_table + " ADD CONSTRAINT `id_" + name_table + "` FOREIGN KEY (`id`) REFERENCES `inventaire` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT"
 
             cur.execute(sql_create_table)
@@ -74,27 +73,34 @@ def add_table():
     return 'Tu fais n\'import quoi'
 
 
-@app.route("/add_obj/<objectType>", methods=['GET', 'POST'])
-def add_obj(objectType):
+@app.route("/add_obj", methods=['GET', 'POST'])
+def add_obj():
     if request.method == 'POST':
         try:
             connection = pymysql.connect(host=host, user=user, password=password, db=db, charset='utf8')
             cur = connection.cursor(pymysql.cursors.DictCursor)
 
+            table_name = str(request.form.get('table_name')).lower()
             params = request.form.getlist('params[]')
 
-            paramsObject = get_object_params(cur, objectType)
+            paramsObject = get_object_params(cur, table_name)
             n = len(paramsObject)
 
-            # cur.execute("INSERT INTO inventaire (`comment`) VALUES (%s)", ("test de communication"))
-            # connection.commit()
+            if len(params) != n:
+                return "Il n'y a pas le bon nombre de paramètres"
+
+            cur.execute("INSERT INTO inventaire (`comment`) VALUES (%s)", (params[0]))
+            connection.commit()
 
             cur.execute('SELECT `id` FROM inventaire ORDER BY `id` DESC LIMIT 1')
 
             result = cur.fetchone()
             id_ = result['id']
 
-            sql = "INSERT INTO `" + str(objectType).lower() + "' (`" + "`, `".join([params[i][0] for i in range(n)]) + "`) VALUES (" + ", ".join(["%s" for i in range(n)]) + ")"
+            sql = "INSERT INTO `" + str(objectType).lower() + "' (`" + "`, `".join( [params[i][0] for i in range(n)]) + "`) VALUES (" + ", ".join(["%s" for i in range(n)]) + ")"
+
+            cur.execute(sql, params)
+            cur.commit()
 
             return str(sql)
 
@@ -107,19 +113,22 @@ def add_obj(objectType):
 
 
 @app.route("/access", methods=['GET', 'POST'])
-def access_obj():
+def access():
     if request.method == 'POST':
         try:
             connection = pymysql.connect(host=host, user=user, password=password, db=db, charset='utf8')
             cur = connection.cursor(pymysql.cursors.DictCursor)
 
-            objectType = request.form.get('objectType')
+            table_name = str(request.form.get('name_table')).lower()
+            params = get_object_params(cur, table_name)
 
-            params = get_object_params(cur, objectType)
+            params_name = [params[i][0] for i in range(len(params))]
+            params_type = [params[i][1] for i in range(len(params))]
 
-            cur.execute("SELECT * FROM `" + objectType + "`")
+            cur.execute("SELECT * FROM `" + table_name + "`")
+            result = cur.fetchall()
 
-            return str(cur.fetchall())
+            return jsonify(name_table=table_name, name_params=params_name, result=result, types=params_type)
 
         except pymysql.Error as e:
             return str(e)
@@ -127,6 +136,7 @@ def access_obj():
             connection.close()
 
     return "None"
+
 
 if __name__ == "__main__":
     app.run(debug=True)
