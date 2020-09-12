@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="">
+<html>
     <header>
         <title>Test</title>
     </header>
     <body>
+        <p id="para"></p>
         <input type="button" onclick="test()">
 
         <script src="jquery.js"></script>
@@ -12,13 +13,13 @@
             {
                 $.ajax({
                     type: "POST",
-                    url: "http://127.0.0.1:5000/add/table",
+                    url: "http://127.0.0.1:5000/add_object",
                     data: {
                         name_table: "test",
-                        params: ["sd", "sdsdfte"]
+                        params: ["test1", "test2"]
                     }
                 }).done(function(html){
-                    alert(html);
+                    $("#para").text(JSON.stringify(html));
                 });
             }
         </script>
