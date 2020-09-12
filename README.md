@@ -27,20 +27,20 @@ $ mysql -u root -p
 ```
 
 ### 4. Création de l'utilisateur et de la base de donnée
-``` sh
-$ mysql> CREATE DATABASE inventaireMiNET;
-$ mysql> CREATE USER 'MiNET'@'localhost' IDENTIFY BY 'password';
-$ mysql> GRANT ALL ON inventaireMiNET.* TO 'MiNET'@'localhost';
-$ mysql> FLUSH PRIVILEGES;
-$ mysql> exit;
+``` sql
+ CREATE DATABASE inventaireMiNET;
+ CREATE USER 'MiNET'@'localhost' IDENTIFY BY 'password';
+ GRANT ALL ON inventaireMiNET.* TO 'MiNET'@'localhost';
+ FLUSH PRIVILEGES;
+ exit;
 ```
 
 ## Initialization de la Base de données (peut-être plus de param)
-``` sh
+``` sql
 $ mysql -u root -p
-$ mysql> USE inventaireMiNET;
-$ mysql> CREATE TABLE IF NOT EXIST inventaire(id int NOT NULL AUTO_INCREMENT PRIMARY KEY, available boolean NOT NULL DEFAULT 1, comment VARCHAR(255));
-$ mysql> exit;
+ USE inventaireMiNET;
+ CREATE TABLE inventaire(id int NOT NULL AUTO_INCREMENT PRIMARY KEY, available bool NOT NULL DEFAULT 1, comment VARCHAR(255));
+ exit;
 ```
 
 ## Démarrage du server
@@ -59,10 +59,39 @@ $ systemctl enable inventaireMiNET_backend
 ```
 
 # Backend
-``` python
-from flask import Flask, jsonify, request
-import pymysql
-from flask_cors import CORS
-```
+## Ajout d'un nouveau type d'objet
+Lien pour effectuer la requête : **server_ip** ***/add_table***
 
-La fonction ***add_table*** permet selon si on choisit *obj* ou *table* d'ajouter un objet ou un nouveau type d'objet (ex: switch, clavier, ...). Lors de l'appel de Flask il suffit d'appeler le serveur avec *127.0.0.1:8080/add/**obj ou table***
+### Arguments pour le POST
+**name_table** : chaine de charactere correspondant au nom de la nouvelle table.  
+**params** : liste de l'ensemble des paramètres hors ceux commun à tous les objects.  
+  
+## Ajout d'un nouvel objet
+Lien pour effectuer la requête : **server_ip** ***/add_obj/nom de la table***
+
+## Récupération des données pour l'affichage des objets d'un même type
+Lien pour effectuer la requête : **server_ip** ***/access***
+
+### Arguments pour le POST
+**name_table** : chaine de charactère correspondant à la table à afficher
+
+### Format de la réponse
+``` json
+{
+  "name_table":"test",
+  "name_params":[
+    "id",
+    "test1",
+    "test2"
+  ],
+  "result":[
+    {"id":1,"test1":"val11","test2":"val12"},
+    {"id":2,"test1":"val21","test2":"val22"}
+  ],
+  "types":[
+    "int",
+    "varchar(255)",
+    "varchar(255)"
+  ]
+}
+```
