@@ -71,55 +71,40 @@ def add_table():
         finally:
             connection.close()
 
-    return 'Tu fais n\'import quoi'
+    return 'Tu fais n\'importe quoi'
 
 
 @app.route("/add_obj", methods=['GET', 'POST'])
 def add_obj():
     if request.method == 'POST':
         try:
-            connection = pymysql.connect(host=host, user=user, password=password, db=db, charset='utf8')
-            cur = connection.cursor(pymysql.cursors.DictCursor)
-
             table_name = str(request.form.get('table_name')).lower()
             params = request.form.getlist('params[]')
+            
+            global_params = []
+            private_params = []
+            for x in params:
+            	if x[0] in GLOBAL_PARAMS_NAMES:
+            		global_params.append([x[0].lower(),x[1]])
+            	else:
+            		private_params.append([x[0].lower(),x[1]])
+            
+            add_object_in_table(table_name,global_params,private_params)
+            
+            return "L'ajout s'est effectué avec succès"
 
-            paramsObject = get_object_params(cur, table_name)
-            n = len(paramsObject)
-
-            if len(params) != n:
-                return "Il n'y a pas le bon nombre de paramètres"
-
-            cur.execute("INSERT INTO inventaire (`comment`) VALUES (%s)", (params[0]))
-            connection.commit()
-
-            cur.execute('SELECT `id` FROM inventaire ORDER BY `id` DESC LIMIT 1')
-
-            result = cur.fetchone()
-            id_ = result['id']
-
-            sql = "INSERT INTO `" + str(objectType).lower() + "' (`" + "`, `".join( [params[i][0] for i in range(n)]) + "`) VALUES (" + ", ".join(["%s" for i in range(n)]) + ")"
-
-            cur.execute(sql, params)
-            cur.commit()
-
-            return str(sql)
-
-        except pymysql.Error as e:
-            return str(e)
+        except e:
+            return "L'ajout n'a pas abouti"
         finally:
-            connection.close()
+            return "Fin"
 
-    return 'Tu fais n\'import quoi'
+    return 'Tu fais n\'importe quoi'
 
 
 @app.route("/access", methods=['GET', 'POST'])
 def access():
     if request.method == 'POST':
         try:
-            connection = pymysql.connect(host=host, user=user, password=password, db=db, charset='utf8')
-            cur = connection.cursor(pymysql.cursors.DictCursor)
-
             table_name = str(request.form.get('name_table')).lower()
             params = get_object_params(cur, table_name)
 
