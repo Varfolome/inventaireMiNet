@@ -10,12 +10,17 @@ export class AppComponent {
 
   showObjectTypeControlSection = true;
   showObjectPositionAddSection = false;
-  showObjectAddSection = false;
+  showObjectPositionEditSection = false;
+  typeObject;
 
 
   GetChildData(data) {
     this.showObjectPositionAddSection = data[0];
     this.showObjectTypeControlSection = data[1];
+    this.showObjectPositionEditSection = data[2];
+    if(data.length === 4) {
+      this.typeObject = data[3];
+    }
   }
 }
 

@@ -1,16 +1,16 @@
 import { InventoryObject } from "./InventoryObject";
-import  { InventoryParameter } from "./InventoryParameter";
+import  { InventoryTypeParameter } from "./InventoryTypeParameter";
 
 export class InventoryTypeObject {
   public type : string;
   public paramNumber : number;
-  public InventoryParameters : any;
+  public InventoryTypeParameters : InventoryTypeParameter[];
   private InventoryObjects : any;
 
   public constructor(type : string) {
     this.type = type;
     this.paramNumber = 0;
-    this.InventoryParameters = [];
+    this.InventoryTypeParameters = [];
     this.InventoryObjects = [];
   }
 

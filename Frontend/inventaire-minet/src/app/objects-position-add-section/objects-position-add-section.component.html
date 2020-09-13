@@ -3,7 +3,7 @@
     <button class ="button-primary" type="button" name="buttonBack" (click) = "BackToControlSection()">Rentrer</button><br>
     <label for="object-type">Entrer le type d'objet</label>
     <input type = "text" name ="object-type" id = "object-type" #objectType>
-    <button type="button" class="button-primary" id="button" (click) = "TryToEdit(objectType.value)">Editer</button><br>
+    <br>
 
     <label for="new-parameter">Ajouter le paramètre</label>
     <input type = "text" name="new-parameter" id="new-parameter" #newParameter>
@@ -15,7 +15,7 @@
     <div class ="add-params">
          <form class="params" id="params">
            <ul>
-             <li *ngFor = "let parameter of parameters">{{parameter}}<input type="text"><button type="button" class = "button-primary" (click) = "removeParameter(parameter)">X</button></li>
+             <li *ngFor = "let parameter of parameters">{{parameter}}<button type="button" class = "button-primary" (click) = "removeParameter(parameter)">X</button></li>
            </ul>
         </form>
       </div>

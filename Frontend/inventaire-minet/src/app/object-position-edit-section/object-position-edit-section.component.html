@@ -1,0 +1,12 @@
+<div class="object-edit" *ngIf = "show">
+  <h2 class="name">{{typeEditObject.type}}</h2>
+  <h2 class="numberOfParams">{{typeEditObject.paramNumber}}</h2>
+  <h1>{{typeEditObject.InventoryTypeParameters}}</h1>
+  <ul class ="list-of-params">
+    <li *ngFor="param of typeEditObject.InventoryTypeParameters">
+      <p>{{param}}</p>
+      <input type="text">
+      <button type="button" class="button-primary">X</button>
+    </li>
+    </ul>
+  </div>

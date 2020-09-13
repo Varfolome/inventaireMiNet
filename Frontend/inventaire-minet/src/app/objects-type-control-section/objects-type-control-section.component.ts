@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { InventoryTypeObject } from '../abstraction/InventoryTypeObject';
+import { InventoryTypeParameter } from '../abstraction/InventoryTypeParameter';
 @Component({
   selector: 'app-objects-type-control-section',
   templateUrl: './objects-type-control-section.component.html',
@@ -7,21 +8,28 @@ import { InventoryTypeObject } from '../abstraction/InventoryTypeObject';
 })
 export class ObjectsTypeControlSectionComponent implements OnInit {
 
-  constructor() { }
+  @Input() show = true;
+  public a = new InventoryTypeObject("clavier");
+  public b = new InventoryTypeParameter("kek");
+  public objectTypeList = [this.a];
+  @Output() myOutput : EventEmitter<any> = new EventEmitter();
+
+  constructor() {
+  }
 
   ngOnInit(): void {
+
+
   }
 
-  //async ShowAllTables() {
-    //const API_URL_GET_TABLES = "http://localhost:8080/";
-    //let response = await fetch(API_URL_GET_TABLES);
-  //}
-  a = new InventoryTypeObject("clavier");
-  @Input() show = true;
-  objectTypeList = [this.a];
-  @Output() myOutput : EventEmitter<any> = new EventEmitter();
   AddTypeObject() {
-    this.myOutput.emit([true,false]);
+    this.myOutput.emit([true,false,false]);
   }
+
+  EditTypeObject(typeObject) {
+    typeObject.InventoryTypeParameters.push(this.b);
+    this.myOutput.emit([false,false,true,typeObject]);
+  }
+
 
 }

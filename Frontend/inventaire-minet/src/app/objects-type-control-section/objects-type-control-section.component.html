@@ -3,7 +3,7 @@
     <li *ngFor="let objectType of objectTypeList">
       <span>{{objectType.type}}</span>
       <span>{{objectType.paramNumber}}</span>
-      <button class="button-primary" type="button" name="buttonEdit" id="Edit">Editer</button>
+      <button class="button-primary" type="button" name="buttonEdit" id="Edit" (click)="EditTypeObject(objectType)">Editer</button>
       <button class="button-primary" type="button" name="buttonDelete" id="Delete">Supprimer</button>
       <button class="button-primary" type="button" name="buttonAccess" id="Access">Accéder</button>
     </li>

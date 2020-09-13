@@ -1,4 +1,4 @@
-.object-position-add-section {
+.object-edit {
   width: 100%;
   margin-top: 10px;
   box-sizing: border-box;
@@ -7,16 +7,6 @@
   background-image: linear-gradient(
     to right,rgba(228,230,243,0.8), rgba(78,123,237,0.8)
     );
-}
-
-#button {
-  margin-left: 20px;
-}
-
-span {
-  margin-left : 15px;
-  color : red;
-  font-size: 20px;
 }
 
 ul {
