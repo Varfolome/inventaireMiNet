@@ -69,6 +69,10 @@ Lien pour effectuer la requête : **server_ip** ***/add_table***
 ## Ajout d'un nouvel objet
 Lien pour effectuer la requête : **server_ip** ***/add_obj/nom de la table***
 
+### Arguments pour le POST:
+**table_name** : nom de la table où ajouter l'objet.  
+**params[]** : liste contenant les paramètres de l'objet sous la forme de couples (NOM_DU_PARAMETRE,VALEUR_DU_PARAMETRE).
+
 ## Récupération des données pour l'affichage des objets d'un même type
 Lien pour effectuer la requête : **server_ip** ***/access***
 
