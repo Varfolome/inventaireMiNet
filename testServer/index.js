@@ -10,8 +10,15 @@ let ObjectTypeList = [];
 
 let a = {
   type : "Lol",
-  paramNumber: "Bab",
-  InventoryTypeParameters: [{paramName : "Kek"}, {paramName : "Bug"}],
+  paramNumber : 0,
+  InventoryTypeParameters: [],
+  InventoryObjects: []
+};
+
+let b = {
+  type : "KEK",
+  paramNumber : 2,
+  InventoryTypeParameters: [{paramName : "Sas"},{paramName: "Ses"}],
   InventoryObjects: []
 };
 
@@ -25,6 +32,14 @@ app.get('/get_all_tables', (req,res) => {
   //res.json({
     //message: "Ok"
   //});
+});
+
+app.post('/edit', (req,res) => {
+  console.log(req.body.type);
+  res.status(200);
+  res.json({
+    body: b
+  });
 });
 
 app.listen(5000, ()=> {

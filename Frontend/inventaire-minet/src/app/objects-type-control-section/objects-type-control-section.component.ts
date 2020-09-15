@@ -33,10 +33,9 @@ export class ObjectsTypeControlSectionComponent implements OnInit {
         for(let i=0; i<tableArray.length; i++) {
 
           let objectType = new InventoryTypeObject(tableArray[i].type);
-          objectType.paramNumber = tableArray[i].paramNumber;
           this.objectTypeList.push(objectType);
         }
-      console.log(this.objectTypeList);
+      //console.log(this.objectTypeList);
 
       });
 }
@@ -45,9 +44,22 @@ export class ObjectsTypeControlSectionComponent implements OnInit {
     this.myOutput.emit([true,false,false]);
   }
 
-  EditTypeObject(typeObject : InventoryTypeObject) {
-    typeObject.InventoryTypeParameters.push(this.b);
-    this.myOutput.emit([false,false,true,typeObject]);
+    EditTypeObject(typeObject : InventoryTypeObject) {
+    fetch("http://localhost:5000/edit", {
+      method: 'POST',
+      body: JSON.stringify(typeObject),
+      headers: {
+        'content-type' : 'application/json'
+      }
+    }).then(response => response.json())
+      .then(typeObjectWithParams => {
+        console.log(typeObjectWithParams.body);
+        //typeObject.InventoryTypeParameters = typeObjectWithParams.InventoryTypeParameters;
+        //typeObject.paramNumber = typeObject.InventoryTypeParameters.length;
+      });
+    //alert(typeObject.InventoryTypeParameters);
+
+    //this.myOutput.emit([false,false,true,typeObject]);
   }
 
 
