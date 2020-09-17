@@ -32,8 +32,7 @@ def add_type():
             params = request.form.getlist('params[]')
                       
             add_type(type_name,jsonify(params=params))
-            
-            return "ADDTABLE: success"
+                       return "ADDTABLE: success"
 
         except pymysql.Error as e:
             return str(e)
@@ -116,12 +115,12 @@ def del_obj():
 def record_loan():
     if request.method == 'POST':
         try:
-            id_obj = request.form.get('obj_id')
+            obj_id = request.form.get('obj_id')
             borrower_first_name = request.form.get('borrower_first_name')
             borrower_last_name = request.form.get('borrower_last_name')
             starting_date = datetime.datetime.today().strftime('%Y-%m-%d-%H-%M-%S-%f)
             
-            new_loan(id_obj,borrower_first_name,borrower_last_name,starting_date)
+            new_loan(obj_id,borrower_first_name,borrower_last_name,starting_date)
             
             return "NEWLOAN: Success"
         
@@ -130,6 +129,15 @@ def record_loan():
             return "NEWLOAN: Fail, reason:" + e
         finally:
             return "Done"
+                                                               
+@app.route("end_loan", methods=['GET','POST'])
+def end_loan():
+    if request.method == 'POST':
+        try:
+            obj_id = request.form.get('obj_id')
+            ending_date = datetime.datetime.today().strftime('%Y-%m-%d-%H-%M-%S-%f)
+
+            end_loan(obj_id,ending_date)
                                                                
 if __name__ == "__main__":
     app.run(debug=True)
