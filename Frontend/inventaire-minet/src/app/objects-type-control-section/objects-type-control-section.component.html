@@ -2,7 +2,7 @@
   <ul class="object-type-control-list">
     <li *ngFor="let objectType of objectTypeList">
       <span>{{objectType.type}}</span>
-      <button class="button-primary" type="button" name="buttonEdit" id="Edit" (click)="EditTypeObject(objectType)">Editer</button>
+      <button class="button-primary" type="button" name="buttonEdit" id="Edit" (click)="EditTypeObject(objectType.type)">Editer</button>
       <button class="button-primary" type="button" name="buttonDelete" id="Delete">Supprimer</button>
       <button class="button-primary" type="button" name="buttonAccess" id="Access">Accéder</button>
     </li>

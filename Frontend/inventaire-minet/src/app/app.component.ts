@@ -11,7 +11,7 @@ export class AppComponent {
   showObjectTypeControlSection = true;
   showObjectPositionAddSection = false;
   showObjectPositionEditSection = false;
-  typeObject;
+  paramsList;
 
 
   GetChildData(data) {
@@ -19,7 +19,9 @@ export class AppComponent {
     this.showObjectTypeControlSection = data[1];
     this.showObjectPositionEditSection = data[2];
     if(data.length === 4) {
-      this.typeObject = data[3];
+      this.paramsList = data[3];
+      console.log(this.paramsList);
+
     }
   }
 }

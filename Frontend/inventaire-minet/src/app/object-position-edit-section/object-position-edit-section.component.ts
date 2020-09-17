@@ -7,11 +7,18 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ObjectPositionEditSectionComponent implements OnInit {
 
+  @Input() show;
+  @Input() paramList;
+
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
-  @Input() show;
-  @Input() typeEditObject;
+  ShowList(){
+    console.log(this.paramList);
+
+  }
+
 }

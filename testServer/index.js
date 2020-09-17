@@ -26,9 +26,7 @@ ObjectTypeList.push(a);
 
 app.get('/get_all_tables', (req,res) => {
   res.status(200);
-  res.json({
-    body: ObjectTypeList
-  });
+  res.json(["Lol","switch", "clavier"]);
   //res.json({
     //message: "Ok"
   //});

@@ -9,9 +9,9 @@ import { InventoryTypeParameter } from '../abstraction/InventoryTypeParameter';
 export class ObjectsTypeControlSectionComponent implements OnInit {
 
   @Input() show = true;
-  public a = new InventoryTypeObject("clavier");
-  public b = new InventoryTypeParameter("kek");
-  public objectTypeList = [this.a];
+  //public a = new InventoryTypeObject("clavier");
+  //public b = new InventoryTypeParameter("kek");
+  public objectTypeList = [];
   @Output() myOutput : EventEmitter<any> = new EventEmitter();
   //this.GetAllTables();
 
@@ -27,15 +27,12 @@ export class ObjectsTypeControlSectionComponent implements OnInit {
     fetch(API_URL)
       .then(response => response.json())
       .then(table => {
-        let tableArray = table.body;
-        console.log(table.body);
 
-        for(let i=0; i<tableArray.length; i++) {
+        for(let i=0; i<table.length; i++) {
 
-          let objectType = new InventoryTypeObject(tableArray[i].type);
+          let objectType = new InventoryTypeObject(table[i]);
           this.objectTypeList.push(objectType);
         }
-      //console.log(this.objectTypeList);
 
       });
 }
@@ -44,23 +41,31 @@ export class ObjectsTypeControlSectionComponent implements OnInit {
     this.myOutput.emit([true,false,false]);
   }
 
-    EditTypeObject(typeObject : InventoryTypeObject) {
-    fetch("http://localhost:5000/edit", {
-      method: 'POST',
-      body: JSON.stringify(typeObject),
-      headers: {
-        'content-type' : 'application/json'
-      }
-    }).then(response => response.json())
-      .then(typeObjectWithParams => {
-        console.log(typeObjectWithParams.body);
-        //typeObject.InventoryTypeParameters = typeObjectWithParams.InventoryTypeParameters;
-        //typeObject.paramNumber = typeObject.InventoryTypeParameters.length;
-      });
-    //alert(typeObject.InventoryTypeParameters);
+  SearchForObject(type : string) : InventoryTypeObject {
+    for(let i=0; i<this.objectTypeList.length; i++){
 
-    //this.myOutput.emit([false,false,true,typeObject]);
+      if(this.objectTypeList[i].type === type) {
+        return i;
+      }
+    }
   }
 
+    EditTypeObject(typeOfObject : InventoryTypeObject) {
+
+      let o = this.SearchForObject(typeOfObject);
+      let c = new InventoryTypeParameter("Kek");
+      //console.log(this.objectTypeList[o].InventoryTypeParameters.length);
+
+      this.objectTypeList[o].InventoryTypeParameters.push(c);
+      //console.log(this.objectTypeList[o].InventoryTypeParameters[0].paramName);
+      let send = [];
+      let n = this.objectTypeList[o].InventoryTypeParameters.length;
+      for(let i=0; i<n; i++){
+        send.push(this.objectTypeList[o].InventoryTypeParameters[i].paramName);
+      }
+      console.log(send);
+
+      this.myOutput.emit([false,false,true,send]);
+    }
 
 }
