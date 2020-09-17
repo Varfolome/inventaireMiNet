@@ -1,29 +1,38 @@
-from sqlalchemy import Column, ForeignKey
+from sqlalchemy import Column, ForeignKey, create_engine, MetaData, Table
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.types import Integer, Boolean
+from sqlalchemy.types import Integer, Boolean, String, JSON
+from sqlalchemy.orm import sessionmaker
 
 from marques import Marques
+from object_types import ObjectTypes
 
-Base_inv = declarative_base()
+Base = declarative_base()
 
 
-class Inventory(Base_inv):
+class Inventory(Base):
     __tablename__ = "inventory"
 
     id = Column(
         Integer,
         primary_key=True
     )
-    available = Column(
-        Boolean
+    object_type = Column(
+        'type',
+        ForeignKey(ObjectTypes.id),
+        nullable=False
     )
     marque = Column(
         Integer,
         ForeignKey(Marques.id),
         nullable=False
     )
+    available = Column(
+        Boolean
+    )
+    autre_params = Column(
+        JSON,
+        nullable=True,
+    )
 
     def __repr__(self):
         return '<Inventory model {}>'.format(self.id)
-
-
