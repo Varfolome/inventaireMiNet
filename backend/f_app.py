@@ -8,12 +8,6 @@ global host, user, password, db
 app = Flask(__name__)
 CORS(app)
 
-host = 'localhost'
-user = 'MiNET'
-password = 'B7mw9G42'
-db = 'inventaireMiNET'
-
-
 def redirection():
     return 'Cette page n\'existe pas vraiment'
 
@@ -30,40 +24,16 @@ def hello():
     return "<h1 style='color:blue'>Hello There!</h1>"
 
 
-@app.route("/add_table", methods=['GET', 'POST'])
-def add_table():
-    if request.method == 'POST':
+@app.route("/add_type", methods=['GET', 'POST'])
+def add_type():
+    if request.method == 'POST'
         try:
-            connection = pymysql.connect(host=host, user=user, password=password, db=db, charset='utf8')
-            cur = connection.cursor(pymysql.cursors.DictCursor)
-
-            name_table = str(request.form.get('name_table')).lower()
-            params_obj = request.form.getlist('params[]')
-
-            n = len(params_obj)
-
-            if n == 0:
-                return 'aucun paramètre'
-
-            # Creation de la Table
-            sql_create_table = "CREATE TABLE IF NOT EXISTS " + str(name_table).lower() + " (`id` int PRIMARY KEY NOT NULL AUTO_INCREMENT, `"
-
-            if n > 1:
-                for i in range(n - 1):
-                    sql_create_table += str(params_obj[i]).lower() + "` varchar(255) NOT NULL, `"
-
-            sql_create_table += str(params_obj[n - 1]).lower() + "` varchar(255) NOT NULL)"
-
-            """
-            Ajout de la Foreign Key
-            Lien entre la TABLE inventaire et celle crée
-            """
-            sql_foreign_key = "ALTER TABLE " + name_table + " ADD CONSTRAINT `id_" + name_table + "` FOREIGN KEY (`id`) REFERENCES `inventaire` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT"
-
-            cur.execute(sql_create_table)
-            cur.execute(sql_foreign_key)
-
-            return "success"
+            type_name = request.form.get('type_name')
+            params = request.form.getlist('params[]')
+                      
+            add_type(type_name,jsonify(params=params))
+            
+            return "ADDTABLE: success"
 
         except pymysql.Error as e:
             return str(e)
@@ -91,17 +61,18 @@ def add_obj():
             
             add_object_in_table(table_name,global_params,private_params)
             
-            return "L'ajout s'est effectué avec succès"
+            return "ADDOBJ: Success"
 
-        except e:
-            return "L'ajout n'a pas abouti"
+        except:
+            e = sys.exc_info()[0]
+            return "ADDOBJ: Fail, reason" str(e)
         finally:
             return "Fin"
 
     return 'Tu fais n\'importe quoi'
 
 
-@app.route("/access", methods=['GET', 'POST'])
+@app.route("/access", methods=['GET', 'POST']) #Demande
 def access():
     if request.method == 'POST':
         try:
@@ -117,12 +88,48 @@ def access():
             return jsonify(name_table=table_name, name_params=params_name, result=result, types=params_type)
 
         except pymysql.Error as e:
-            return str(e)
+            return "ACCESS: Fail, reason:" + str(e)
         finally:
             connection.close()
 
     return "None"
 
-
+@app.route("/del_obj", methods=['GET', 'POST'])
+def del_obj():
+    if request.method == 'POST':
+        try:
+            id_obj = request.form.get('obj_id')
+            type_obj = request.form.get('obj_type')
+            
+            delete_object(id_obj,type_obj)
+            
+            return "DEL: Success"
+        
+        except:
+            e = sys.exc_info()[0]
+            return "DELOBJ: Fail, reason:" + str(e)
+        
+        finally:
+            return "Done"
+            
+@app.route("/new_loan", methods=['GET', 'POST'])
+def record_loan():
+    if request.method == 'POST':
+        try:
+            id_obj = request.form.get('obj_id')
+            borrower_first_name = request.form.get('borrower_first_name')
+            borrower_last_name = request.form.get('borrower_last_name')
+            starting_date = datetime.datetime.today().strftime('%Y-%m-%d-%H-%M-%S-%f)
+            
+            new_loan(id_obj,borrower_first_name,borrower_last_name,starting_date)
+            
+            return "NEWLOAN: Success"
+        
+        except:
+            e = sys.exc_info()[0]
+            return "NEWLOAN: Fail, reason:" + e
+        finally:
+            return "Done"
+                                                               
 if __name__ == "__main__":
     app.run(debug=True)
