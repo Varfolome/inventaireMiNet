@@ -4,10 +4,10 @@ from sqlalchemy.types import Integer, Date, String
 
 from inventory import Inventory
 
-Base_his = declarative_base()
+Base = declarative_base()
 
 
-class Historique(Base_his):
+class Historique(Base):
     __tablename__ = "historique"
 
     id = Column(

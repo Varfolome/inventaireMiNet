@@ -3,7 +3,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.types import Integer, Boolean, String, JSON
 from sqlalchemy.orm import sessionmaker
 
-from marques import Marques
+from brands import Brand
 from object_types import ObjectTypes
 
 Base = declarative_base()
@@ -21,9 +21,9 @@ class Inventory(Base):
         ForeignKey(ObjectTypes.id),
         nullable=False
     )
-    marque = Column(
+    brand = Column(
         Integer,
-        ForeignKey(Marques.id),
+        ForeignKey(Brand.id),
         nullable=False
     )
     available = Column(

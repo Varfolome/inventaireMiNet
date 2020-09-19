@@ -1,21 +1,23 @@
-from sqlalchemy import Column, ForeignKey, create_engine, MetaData, Table
+from sqlalchemy import Column
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.types import Integer, Boolean, String, JSON
+from sqlalchemy.types import Integer, String, JSON
 
 
-Base_type = declarative_base()
+Base = declarative_base()
 
 
-class ObjectTypes(Base_type):
+class ObjectTypes(Base):
     __tablename__ = "type"
 
     id = Column(
         Integer,
         primary_key=True
     )
-    available = Column(
-        String
+    name_type = Column(
+        'name',
+        String(80)
     )
-
-    def __repr__(self):
-        return '<Type model {}>'.format(self.id)
+    params = Column(
+        JSON,
+        nullable=True
+    )

@@ -2,11 +2,11 @@ from sqlalchemy import Column
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.types import Integer, String
 
-Base_mrq = declarative_base()
+Base = declarative_base()
 
 
-class Marques(Base_mrq):
-    __tablename__ = "marques"
+class Brand(Base):
+    __tablename__ = "brands"
 
     id = Column(
         Integer,
