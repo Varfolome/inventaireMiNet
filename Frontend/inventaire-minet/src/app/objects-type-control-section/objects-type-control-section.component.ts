@@ -41,7 +41,7 @@ export class ObjectsTypeControlSectionComponent implements OnInit {
     this.myOutput.emit([true,false,false]);
   }
 
-  SearchForObject(type : string) : InventoryTypeObject {
+  SearchForObject(type : string) : number {
     for(let i=0; i<this.objectTypeList.length; i++){
 
       if(this.objectTypeList[i].type === type) {
@@ -50,7 +50,7 @@ export class ObjectsTypeControlSectionComponent implements OnInit {
     }
   }
 
-    EditTypeObject(typeOfObject : InventoryTypeObject) {
+    EditTypeObject(typeOfObject : string) {
 
       let o = this.SearchForObject(typeOfObject);
       let c = new InventoryTypeParameter("Kek");

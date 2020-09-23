@@ -30,7 +30,7 @@ export class ObjectsPositionAddSectionComponent implements OnInit {
     }
 
     BackToControlSection() {
-      this.myOutput.emit([false,true]);
+      this.myOutput.emit([false,true,false]);
     }
 
     searchForParameter(parameter : string) {
@@ -59,19 +59,27 @@ export class ObjectsPositionAddSectionComponent implements OnInit {
       //alert(parameter);
     }
 
-    TryToEdit(objectType : string) {
-      let uppercase_objectType = objectType.toUpperCase();
-      const editDemand = { uppercase_objectType };
-      const API_URL_EDIT_DEMAND = "http://localhost:8080/editDemand";
-      console.log(editDemand);
+    addObjectType(objectType : string) {
+      const API_URL = "http://localhost:5000/add_element";
+      if(objectType) {
+        console.log("Sended");
 
-      fetch(API_URL_EDIT_DEMAND, {
-        method: 'POST',
-        body: JSON.stringify(editDemand),
-        headers: {
-          'content-type' : 'application/json'
-        }
-      });
+        fetch(API_URL, {
+          method: 'POST',
+          body: JSON.stringify({
+            type : objectType,
+            paramsType : this.parameters
+          }),
+          headers: {
+            'content-type' : 'application/json'
+          }
+        });
+        console.log("Oups");
+
+      }
+      else {
+        alert("WoW, pas cool");
+      }
     }
 
 }
